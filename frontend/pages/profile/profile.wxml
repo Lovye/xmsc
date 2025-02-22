@@ -28,7 +28,7 @@
       <view class="title">小米账号登录</view>
       <view class="info">
         <input class="username" type="text" placeholder="请输入手机号码"/>
-        <input class="password" type="passowrd" placeholder="请输入密码"/>
+        <input class="password" type="password" placeholder="请输入密码"/>
       </view>
     </view>
     <view class="button">
