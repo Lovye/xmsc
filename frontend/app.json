@@ -5,7 +5,8 @@
     "pages/cart/cart",
     "pages/goods/goods",
     "pages/goods/profile",
-    "pages/profile/profile"
+    "pages/profile/profile",
+    "pages/checkout/checkout"
   ],
   "window": {
     "navigationBarTextStyle": "black",

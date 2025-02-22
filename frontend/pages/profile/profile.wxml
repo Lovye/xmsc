@@ -1,4 +1,25 @@
-<view class="nav-bar">
+<view class="container">
+  <view wx:if="{{ auth }}" class="profile">
+  </view>
+  <view wx:else class="login">
+    <view class="head">
+      <image class="logo" src="/img/logo.png" mode=""/>
+      <view class="flag">让每个人都能享受科技的乐趣</view>
+    </view>
+    <view class="form">
+      <view class="title">小米账号登录</view>
+      <view class="info">
+        <input class="username" type="text" placeholder="请输入手机号码"/>
+        <input class="password" type="passowrd" placeholder="请输入密码"/>
+      </view>
+    </view>
+    <view class="button">
+      <view class="login">登录</view>
+      <view class="register">注册</view>
+    </view>
+  </view>
+
+  <view class="nav-bar">
   <view class="nav-item" bindtap="tabClick" data-index="0">
     <image wx:if="{{ navIndex == 0 }}" class="nav-icon" src="/img/home2.png" />
     <image wx:else class="nav-icon" src="/img/home1.png" />
@@ -15,3 +36,4 @@
     <text class="nav-text">我的</text>
   </view>
   </view>
+</view>

@@ -1,29 +1,11 @@
-// pages/profile/profile.js
+// pages/checkout/checkout.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    navIndex: 2,
-    auth: false,
-  },
-  tabClick(e){
-    let index = e.currentTarget.dataset.index
-    if(index == 2) return
-    if(index == 0){
-      wx.redirectTo({
-        url: '/pages/index/index',
-      })
-    }else if(index == 1){
-      wx.redirectTo({
-        url: '/pages/cart/cart',
-      })
-    }else if(index == 2){
-      wx.redirectTo({
-        url: '/pages/profile/profile',
-      })
-    }
+
   },
 
   /**
@@ -44,7 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-    
+
   },
 
   /**
