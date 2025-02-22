@@ -1,0 +1,30 @@
+const koa = require('koa')
+const router = require('koa-router')
+const bodyParser = require('koa-bodyparser')
+const cors = require('koa2-cors')
+const goodstype = require('./dao/goodsTypeDao')
+const goodsDao = require('./dao/goodsDao')
+
+const appRouter = new router()
+
+appRouter.get('/goodsType', async ctx => {
+    let result = null
+    result = await goodstype.selectAllGoodsType()
+    ctx.body = result
+})
+appRouter.get('/goods/:typeId', async ctx => {
+    let typeId = ctx.params.typeId
+    let result = await goodsDao.selectGoodsByTypeId(typeId)
+    ctx.body = result
+})
+
+const app = new koa()
+
+app.use(bodyParser())
+app.use(cors())
+app.use(appRouter.routes())
+
+const port = 8080
+app.listen(port, ()=>{
+    console.log(`server is running.`)
+})

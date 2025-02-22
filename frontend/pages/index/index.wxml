@@ -1,0 +1,33 @@
+<view class="container">
+  <view class="left">
+    <view bind:tap="selectType" data-index="{{index}}" wx:for="{{ goodsTypeArr }}" class="item {{ item.goodsTypeId == goodsType.goodsTypeId ? 'selected-item' : '' }}">{{item.goodsTypeName}}</view>
+  </view>
+  <view class="right">
+    <image src="/img/{{ goodsType.goodsTypeImg }}" mode=""/>
+    <view class="title">{{ goodsType.goodsTypeName}}</view>
+    <view bind:tap="toGoods" wx:for="{{ goodsArr }}" data-index="{{index}}" class="goods">
+      <image src="/img/{{ item.goodsImg }}" mode=""/>
+      <view class="content">
+        <view>{{ item.goodsName }}</view>
+        <view>{{ item.goodsPrice }}</view>
+      </view>
+    </view>
+  </view>
+  <view class="nav-bar">
+  <view class="nav-item" bindtap="tabClick" data-index="0">
+    <image wx:if="{{ navIndex == 0 }}" class="nav-icon" src="/img/home2.png" />
+    <image wx:else class="nav-icon" src="/img/home1.png" />
+    <text class="nav-text">首页</text>
+  </view>
+  <view class="nav-item" bindtap="tabClick" data-index="1">
+    <image wx:if="{{ navIndex == 1 }}" class="nav-icon" src="/img/cart2.png" />
+    <image wx:else class="nav-icon" src="/img/cart1.png" />
+    <text class="nav-text">购物车</text>
+  </view>
+  <view class="nav-item" bindtap="tabClick" data-index="2">
+    <image wx:if="{{ navIndex == 2 }}" class="nav-icon" src="/img/user2.png" />
+    <image wx:else class="nav-icon" src="/img/user1.png" />
+    <text class="nav-text">我的</text>
+  </view>
+  </view>
+</view>
