@@ -1,2 +1,64 @@
-<!--pages/checkout/checkout.wxml-->
-<text>pages/checkout/checkout.wxml</text>
+<view class="container">
+  <view class="addr">
+    <view class="left">
+      <view class="user">
+        <view class="name">雷军</view>
+        <view class="phone">123456</view>
+      </view>
+      <view class="location">
+        中国
+      </view>
+    </view>
+    <view class="right">
+      地址管理
+    </view>
+  </view>
+  <view class="cart">
+    <view wx:for="{{ cart }}" class="item" data-index="{{ index }}">
+      <view class="left">
+        <image src="/img/{{ item.goodsImg }}" mode="" class="img"/>
+        <view class="name">{{ item.goodsName }}</view>
+      </view>
+      <view class="right">￥{{ item.goodsPrice }} x {{ item.quantity }}</view>
+    </view>
+  </view>
+  <view bind:tap="continueShopping" class="add">继续购物</view>
+  <radio-group bindchange="changePayWay" class="way">
+    <view class="item">
+      <view class="left">
+        <image src="/img/payment01.png" mode="" class="img"/>
+        <view class="name">支付宝</view>
+      </view>
+      <view class="right">
+        <radio class="choose" value="0"/>
+      </view>
+    </view>
+    <view class="item">
+      <view class="left">
+        <image src="/img/payment02.png" mode="" class="img"/>
+        <view class="name">小米钱包</view>
+      </view>
+      <view class="right">
+        <radio class="choose" value="1"/>
+      </view>
+    </view>
+    <view class="item">
+      <view class="left">
+        <image src="/img/payment03.png" mode="" class="img"/>
+        <view class="name">微信支付</view>
+      </view>
+      <view class="right">
+        <radio class="choose" value="2"/>
+      </view>
+    </view>
+  </radio-group>
+  <view class="pay">
+    <view class="sum">
+      共 {{ goodsNum }} 件 金额：<span>{{ sumPrice }}</span> 元
+    <view></view>
+    </view>
+    <view class="btn">
+      <view bind:tap="pay">确认支付</view>
+    </view>
+  </view>
+</view>

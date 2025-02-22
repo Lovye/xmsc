@@ -59,6 +59,8 @@
   color: rgb(255,126,37);
 }
 .pay .btn{
+  font-size: 4vw;
+  font-weight: bold;
   color: white;
   line-height: 8vh;
   text-align: center;

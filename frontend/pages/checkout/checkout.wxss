@@ -1,1 +1,141 @@
-/* pages/checkout/checkout.wxss */
+.container{
+  background-color: rgb(238,238,238);
+  min-height: 100vh;
+}
+.addr{
+  display: flex;
+  height: 10vh;
+  box-sizing: border-box;
+  padding: 0 5vw;
+  background-color: white;
+}
+.addr .left{
+  flex: 10;
+  display: flex;
+  flex-direction: column;
+}
+.addr .left .user{
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  color: rgb(123,123,123);
+}
+.user .name{
+  margin-right: 2vw;
+}
+.addr .left .location{
+  margin-top: 1vh;
+  font-size: 3.5vw;
+  color: gray;
+}
+
+.addr .right{
+  flex: 3;
+  font-size: 4vw;
+  text-align: center;
+  line-height: 10vh;
+  color: rgb(254,110,12);
+}
+.cart{
+  margin-top: 2vh;
+  display: flex;
+  flex-direction: column;
+  gap:1vh
+}
+.cart .item{
+  height: 20vw;
+  box-sizing: border-box;
+  padding: 0 5vw;
+  display: flex;
+  background-color: white;
+  align-items: center;
+}
+.cart .item .left{
+  flex: 7;
+  display: flex;
+}
+.cart .item .left .name{
+  margin-left: 3vw;
+  color: gray;
+  font-size: 4vw;
+  line-height: 18vw;
+}
+.cart .item .left .img{
+  width: 18vw;
+  height: 18vw;
+}
+.cart .item .right{
+  color: rgb(90, 89, 89);
+  font-size: 4vw;
+}
+.add{
+  text-align: center;
+  height: 8vh;
+  line-height: 8vh;
+  color: rgb(248,156,94);
+  font-weight: bold;
+  font-size: 4vw;
+}
+.way{
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+.way .item{
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  align-items: center;
+}
+.way .item .left{
+  flex: 10
+}
+.way .item .right{
+  flex: 1
+}
+.way .item .left{
+  height: 8vh;
+  box-sizing: border-box;
+  padding: 1vh 5vw;
+  display: flex;
+}
+.way .item .left .img{
+  width: 10vw;
+  height: 10vw;
+}
+.way .item .left .name{
+  margin-left: 3vw;
+  color: gray;
+  font-size: 4vw;
+  line-height: 10vw;
+}
+.way .item .right .choose{
+  display: inline-block;
+}
+.pay{
+  margin-top: 5vh;
+  width: 100vw;
+  height: 8vh;
+  background-color: white;
+  display: flex;
+}
+.pay .sum{
+  flex:2;
+  color: gray;
+  font-size: 4vw;
+  line-height: 8vh;
+  text-align: center;
+}
+.pay .sum span{
+  font-size: 5vw;
+  color: rgb(255,126,37);
+}
+.pay .btn{
+  font-size: 3.5vw;
+  font-weight: bold;
+  color: white;
+  line-height: 8vh;
+  text-align: center;
+  background-color: rgb(255,103,0);
+  flex:1;
+}

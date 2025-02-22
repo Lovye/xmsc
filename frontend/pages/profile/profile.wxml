@@ -1,5 +1,23 @@
 <view class="container">
   <view wx:if="{{ auth }}" class="profile">
+    <view class="head">
+      <image src="/img/logo.png" mode="" class="img"/>
+      <view class="name">雷军</view>
+    </view>
+    <view class="menu">
+      <view class="info">
+        <view class="left">信息管理</view>
+        <view class="right">></view>
+      </view>
+      <view class="addr">
+        <view class="left">地址管理</view>
+        <view class="right">></view>
+      </view>
+      <view class="order">
+        <view class="left">订单信息</view>
+        <view class="right">></view>
+      </view>
+    </view>
   </view>
   <view wx:else class="login">
     <view class="head">
@@ -14,8 +32,8 @@
       </view>
     </view>
     <view class="button">
-      <view class="login">登录</view>
-      <view class="register">注册</view>
+      <view bind:tap="login" class="login">登录</view>
+      <view bind:tap="register" class="register">注册</view>
     </view>
   </view>
 

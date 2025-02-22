@@ -1,6 +1,5 @@
 // pages/cart/cart.js
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -24,6 +23,19 @@ Page({
     })
     wx.setStorageSync('cart', newCart)
     this.calculateCart(newCart)
+  },
+  toCheckout(){
+    let auth = wx.getStorageSync('auth')
+    if(auth){
+      wx.redirectTo({
+        url: '/pages/checkout/checkout',
+      })
+    }else{
+      wx.redirectTo({
+        url: '/pages/profile/profile',
+      })
+    }
+
   },
   tabClick(e){
     let index = e.currentTarget.dataset.index

@@ -20,7 +20,7 @@
     <view></view>
     </view>
     <view class="btn">
-      <view>去结算</view>
+      <view bind:tap="toCheckout">去结算</view>
     </view>
   </view>
   <view class="nav-bar">
