@@ -6,6 +6,17 @@ Page({
   data: {
     navIndex: 2,
     auth: false,
+    register: false,
+  },
+  toRegister(){
+    this.setData({
+      register: true
+    })
+  },
+  toLogin(){
+    this.setData({
+      register: false
+    })
   },
   tabClick(e){
     let index = e.currentTarget.dataset.index

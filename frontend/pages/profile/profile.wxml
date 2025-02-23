@@ -24,16 +24,28 @@
       <image class="logo" src="/img/logo.png" mode=""/>
       <view class="flag">让每个人都能享受科技的乐趣</view>
     </view>
-    <view class="form">
+    <view wx:if="{{ register }}" class="form">
+      <view class="title">小米账号注册</view>
+      <view class="info">
+        <input class="username" type="text" placeholder="请输入手机号码"/>
+        <input class="nickname" type="text" placeholder="请输入姓名"/>
+        <input class="password" type="password" placeholder="请输入密码"/>
+      </view>
+    </view>
+    <view wx:else class="form">
       <view class="title">小米账号登录</view>
       <view class="info">
         <input class="username" type="text" placeholder="请输入手机号码"/>
         <input class="password" type="password" placeholder="请输入密码"/>
       </view>
     </view>
-    <view class="button">
+    <view wx:if="{{ register }}" class="button">
+      <view bind:tap="register" class="login">注册</view>
+      <view bind:tap="toLogin" class="register">返回</view>
+    </view>
+    <view wx:else class="button">
       <view bind:tap="login" class="login">登录</view>
-      <view bind:tap="register" class="register">注册</view>
+      <view bind:tap="toRegister" class="register">注册</view>
     </view>
   </view>
 
