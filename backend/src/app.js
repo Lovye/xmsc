@@ -4,6 +4,7 @@ const bodyParser = require('koa-bodyparser')
 const cors = require('koa2-cors')
 const goodstype = require('./dao/goodsTypeDao')
 const goodsDao = require('./dao/goodsDao')
+const registerController = require('./controller/register');  // 导入注册控制器
 
 const appRouter = new router()
 
@@ -17,6 +18,9 @@ appRouter.get('/goods/:typeId', async ctx => {
     let result = await goodsDao.selectGoodsByTypeId(typeId)
     ctx.body = result
 })
+
+// 用户注册
+appRouter.post('/register', registerController.register);  // 注册接口
 
 const app = new koa()
 
