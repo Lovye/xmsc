@@ -7,6 +7,7 @@ const goodsDao = require('./dao/goodsDao')
 const registerController = require('./controller/register')  // 导入注册控制器
 const loginController = require('./controller/auth')
 const purchaseController = require('./controller/purchase')
+const addressController = require('./controller/address')
 
 const appRouter = new router()
 
@@ -22,9 +23,14 @@ appRouter.get('/goods/:typeId', async ctx => {
 })
 
 // 用户注册
-appRouter.post('/register', registerController.register)  // 注册接口
+appRouter.post('/register', registerController.register)
 appRouter.post('/login', loginController.login)
+
 appRouter.post('/purchase', purchaseController.purchase)
+
+appRouter.post('/address', addressController.create)
+appRouter.put('/address/default/:addressId', addressController.setDefault)
+appRouter.get('/address', addressController.get)
 
 const app = new koa()
 

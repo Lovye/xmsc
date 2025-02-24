@@ -7,7 +7,7 @@ module.exports = {
             expiresIn: '2h'
         });
     },
-    decode: (token) => {
+    design: (token) => {
         return jwt.verify(token, SECRET_KEY);
     }
 };
