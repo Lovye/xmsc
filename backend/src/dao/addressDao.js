@@ -1,6 +1,6 @@
 const execute = require('../database');
 
-let dao = {}
+let dao = {};
 
 dao.create = async (data) => {
     const { contactName, contactTel, address, telId, defaultState } = data;
@@ -26,4 +26,4 @@ dao.setDefaultStateByAddressId = async (defaultState, addressId) => {
     await execute(sql, [defaultState, addressId]);
 }
 
-module.exports = dao
+module.exports = dao;

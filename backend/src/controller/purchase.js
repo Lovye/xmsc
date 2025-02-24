@@ -12,7 +12,7 @@ module.exports = {
         }
         let telId = design(token).telId;
         let orderTotal = goodsInfos
-            .map(goodsInfo => goodsDao.selectGoodsByTypeId(goodsInfo.goodsId).goodsPrice * goodsInfo.quantity)
+            .map(async goodsInfo => await goodsDao.selectGoodsByTypeId(goodsInfo.goodsId).goodsPrice * goodsInfo.quantity)
             .reduce((acc, price) => acc + price, 0);
         let orderDate = new Date();
 
@@ -22,7 +22,7 @@ module.exports = {
             orderTotal,
             addressId
         };
-        let orderId = orderDao.create(newOrder);
+        let orderId = await orderDao.create(newOrder);
         ctx.status = 200;
         ctx.body = {
             orderId

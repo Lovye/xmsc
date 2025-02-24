@@ -26,7 +26,7 @@ module.exports = {
             telId,
             defaultState
         };
-        let addressId = addressDao.create(newAddress);
+        let addressId = await addressDao.create(newAddress);
         ctx.status = 200;
         ctx.body = {
             addressId
@@ -41,7 +41,7 @@ module.exports = {
         }
 
         let telId = design(token).telId;
-        let addresses = addressDao.selectByTelId(telId);
+        let addresses = await addressDao.selectByTelId(telId);
 
         ctx.status = 200;
         ctx.body = {
@@ -57,18 +57,20 @@ module.exports = {
         }
         let telId = design(token).telId;
 
-        let targetAddressId = ctx.params.addressId
-        let address = addressDao.selectByAddressId(targetAddressId);
+        let targetAddressId = ctx.params.addressId;
+        let address = await addressDao.selectByAddressId(targetAddressId);
         if (address.telId != telId) {
             ctx.status = 402;
             return;
         }
 
-        addressDao.selectByTelId(telId)
+        await addressDao.selectByTelId(telId)
             .map(x => x.addressId)
             .filter(x => x != targetAddressId)
-            .map(x => addressDao.setDefaultStateByAddressId(0, x));
-        addressDao.setDefaultStateByAddressId(1, targetAddressId);
+            .map(async x => await addressDao.setDefaultStateByAddressId(0, x));
+        await addressDao.setDefaultStateByAddressId(1, targetAddressId);
+
+        ctx.status = 200;
     }
 
 }
