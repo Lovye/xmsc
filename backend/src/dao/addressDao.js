@@ -18,7 +18,7 @@ dao.selectByTelId = async (telId) => {
 dao.selectByAddressId = async (addressId) => {
     let sql = 'SELECT * FROM address WHERE addressId = ?';
     let result = await execute(sql, [addressId]);
-    return result;
+    return result[0];
 }
 
 dao.setDefaultStateByAddressId = async (defaultState, addressId) => {

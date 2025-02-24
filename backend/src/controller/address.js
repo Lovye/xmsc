@@ -71,13 +71,18 @@ module.exports = {
             return;
         }
 
-        await addressDao.selectByTelId(telId)
-            .map(x => x.addressId)
-            .filter(x => x != targetAddressId)
-            .map(async x => await addressDao.setDefaultStateByAddressId(0, x));
-        await addressDao.setDefaultStateByAddressId(1, targetAddressId);
+        let allAddress = await addressDao.selectByTelId(telId);
+        let allAddressId = allAddress.map(x => x.addressId)
+                    .filter(x => x != targetAddressId)
 
+        await Promise.all(allAddressId.map(async addressId => {
+            await addressDao.setDefaultStateByAddressId(0, addressId);
+        }));
+        await addressDao.setDefaultStateByAddressId(1, targetAddressId);
         ctx.status = 200;
+        ctx.body = {
+            msg: "设置成功"
+        }
     }
 
 }
