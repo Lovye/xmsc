@@ -11,6 +11,13 @@ module.exports = {
             ctx.status = 401;
             return;
         }
+        if (!address) {
+            ctx.status = 400;
+            ctx.body = {
+                error: '地址不能为空'
+            };
+            return;
+        }
 
         let decoded = design(token);
 
