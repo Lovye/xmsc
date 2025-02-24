@@ -1,11 +1,11 @@
-const execute = require('../databse')
+const execute = require('../database')
 
 let dao = {}
 
-dao.selectGoodsByTypeId = async (typeId)=> {
+dao.selectGoodsByTypeId = async (typeId) => {
     let sql = 'select * from goods where goodsTypeId = ?'
     let result = null
-    await execute(sql, [typeId]).then( res => {result = res})
+    await execute(sql, [typeId]).then(res => { result = res })
     return result
 }
 

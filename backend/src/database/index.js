@@ -7,9 +7,9 @@ const execute = (sql, values) => {
         let connection = mysql.createConnection(config)
         connection.connect()
         connection.query(sql, values, (err, result) => {
-            if(err){
+            if (err) {
                 reject(err)
-            }else{
+            } else {
                 resolve(result)
             }
         })
