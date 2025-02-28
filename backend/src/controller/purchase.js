@@ -11,18 +11,23 @@ module.exports = {
             return;
         }
         let telId = design(token).telId;
-        let orderTotal = goodsInfos
-            .map(async goodsInfo => await goodsDao.selectGoodsByTypeId(goodsInfo.goodsId).goodsPrice * goodsInfo.quantity)
-            .reduce((acc, price) => acc + price, 0);
+        let orderTotal = 0;
+        for (let i = 0; i < goodsInfos.length; i++) {
+            let goodsInfo = goodsInfos[i];
+            let tmp = await goodsDao.selectGoodsByGoodsId(goodsInfo.goodsId);
+            orderTotal += tmp.goodsPrice * goodsInfo.quantity;
+        }
         let orderDate = new Date();
+        let orderId = orderDate.getMilliseconds();
 
         let newOrder = {
             telId,
             orderDate,
             orderTotal,
-            addressId
+            addressId,
+            orderId
         };
-        let orderId = await orderDao.create(newOrder);
+        await orderDao.create(newOrder);
         ctx.status = 200;
         ctx.body = {
             orderId

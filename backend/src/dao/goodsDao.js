@@ -9,4 +9,11 @@ dao.selectGoodsByTypeId = async (typeId) => {
     return result
 }
 
+dao.selectGoodsByGoodsId = async (goodsId) => {
+    let sql = 'select * from goods where goodsId = ?'
+    let result = null
+    await execute(sql, [goodsId]).then(res => { result = res })
+    return result[0]
+}
+
 module.exports = dao

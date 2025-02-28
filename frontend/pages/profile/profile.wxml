@@ -27,16 +27,16 @@
     <view wx:if="{{ register }}" class="form">
       <view class="title">小米账号注册</view>
       <view class="info">
-        <input class="username" type="text" placeholder="请输入手机号码"/>
-        <input class="nickname" type="text" placeholder="请输入姓名"/>
-        <input class="password" type="password" placeholder="请输入密码"/>
+        <input class="username" data-class="number"  bind:input="handleInputChange" type="text" placeholder="请输入手机号码"/>
+        <input class="nickname" data-class="name"  bind:input="handleInputChange" type="text" placeholder="请输入姓名"/>
+        <input class="password" data-class="pwd"  bind:input="handleInputChange" type="password" placeholder="请输入密码"/>
       </view>
     </view>
     <view wx:else class="form">
       <view class="title">小米账号登录</view>
       <view class="info">
-        <input class="username" type="text" placeholder="请输入手机号码"/>
-        <input class="password" type="password" placeholder="请输入密码"/>
+        <input class="username" data-class="number" bind:input="handleInputChange" type="text" placeholder="请输入手机号码"/>
+        <input class="password" data-class="pwd" bind:input="handleInputChange" type="password" placeholder="请输入密码"/>
       </view>
     </view>
     <view wx:if="{{ register }}" class="button">
