@@ -1,0 +1,43 @@
+<view>
+  <view class="goods">
+    <view wx:for="{{ cart }}" class="item" data-index="{{ index }}">
+    <view class="left">
+      <image class="img" src="/img/{{ item.goodsImg }}" mode=""/>
+      <view class="content">
+        <view class="name">{{ item.goodsName }}</view>
+        <view class="price">售价：{{ item.goodsPrice }}元</view>
+        <view class="quantity">{{ item.quantity }}</view>
+      </view>
+    </view>
+    <view class="right">
+      <image data-index="{{ index }}" bind:tap="removeGoods" class="delete" src="/img/delete.svg" mode=""/>
+    </view>
+    </view>
+  </view>
+  <view class="pay">
+    <view class="sum">
+      共 {{ goodsNum }} 件 金额：<span>{{ sumPrice }}</span> 元
+    <view></view>
+    </view>
+    <view class="btn">
+      <view bind:tap="toCheckout">去结算</view>
+    </view>
+  </view>
+  <view class="nav-bar">
+  <view class="nav-item" bindtap="tabClick" data-index="0">
+    <image wx:if="{{ navIndex == 0 }}" class="nav-icon" src="/img/home2.png" />
+    <image wx:else class="nav-icon" src="/img/home1.png" />
+    <text class="nav-text">首页</text>
+  </view>
+  <view class="nav-item" bindtap="tabClick" data-index="1">
+    <image wx:if="{{ navIndex == 1 }}" class="nav-icon" src="/img/cart2.png" />
+    <image wx:else class="nav-icon" src="/img/cart1.png" />
+    <text class="nav-text">购物车</text>
+  </view>
+  <view class="nav-item" bindtap="tabClick" data-index="2">
+    <image wx:if="{{ navIndex == 2 }}" class="nav-icon" src="/img/user2.png" />
+    <image wx:else class="nav-icon" src="/img/user1.png" />
+    <text class="nav-text">我的</text>
+  </view>
+  </view>
+</view>

@@ -1,0 +1,69 @@
+<view class="container">
+  <view wx:if="{{ auth }}" class="profile">
+    <view class="head">
+      <image src="/img/logo.png" mode="" class="img"/>
+      <view class="name">雷军</view>
+    </view>
+    <view class="menu">
+      <view class="info">
+        <view class="left">信息管理</view>
+        <view class="right">></view>
+      </view>
+      <view class="addr">
+        <view class="left">地址管理</view>
+        <view class="right">></view>
+      </view>
+      <view class="order">
+        <view class="left">订单信息</view>
+        <view class="right">></view>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="login">
+    <view class="head">
+      <image class="logo" src="/img/logo.png" mode=""/>
+      <view class="flag">让每个人都能享受科技的乐趣</view>
+    </view>
+    <view wx:if="{{ register }}" class="form">
+      <view class="title">小米账号注册</view>
+      <view class="info">
+        <input class="username" data-class="number"  bind:input="handleInputChange" type="text" placeholder="请输入手机号码"/>
+        <input class="nickname" data-class="name"  bind:input="handleInputChange" type="text" placeholder="请输入姓名"/>
+        <input class="password" data-class="pwd"  bind:input="handleInputChange" type="password" placeholder="请输入密码"/>
+      </view>
+    </view>
+    <view wx:else class="form">
+      <view class="title">小米账号登录</view>
+      <view class="info">
+        <input class="username" data-class="number" bind:input="handleInputChange" type="text" placeholder="请输入手机号码"/>
+        <input class="password" data-class="pwd" bind:input="handleInputChange" type="password" placeholder="请输入密码"/>
+      </view>
+    </view>
+    <view wx:if="{{ register }}" class="button">
+      <view bind:tap="register" class="login">注册</view>
+      <view bind:tap="toLogin" class="register">返回</view>
+    </view>
+    <view wx:else class="button">
+      <view bind:tap="login" class="login">登录</view>
+      <view bind:tap="toRegister" class="register">注册</view>
+    </view>
+  </view>
+
+  <view class="nav-bar">
+  <view class="nav-item" bindtap="tabClick" data-index="0">
+    <image wx:if="{{ navIndex == 0 }}" class="nav-icon" src="/img/home2.png" />
+    <image wx:else class="nav-icon" src="/img/home1.png" />
+    <text class="nav-text">首页</text>
+  </view>
+  <view class="nav-item" bindtap="tabClick" data-index="1">
+    <image wx:if="{{ navIndex == 1 }}" class="nav-icon" src="/img/cart2.png" />
+    <image wx:else class="nav-icon" src="/img/cart1.png" />
+    <text class="nav-text">购物车</text>
+  </view>
+  <view class="nav-item" bindtap="tabClick" data-index="2">
+    <image wx:if="{{ navIndex == 2 }}" class="nav-icon" src="/img/user2.png" />
+    <image wx:else class="nav-icon" src="/img/user1.png" />
+    <text class="nav-text">我的</text>
+  </view>
+  </view>
+</view>

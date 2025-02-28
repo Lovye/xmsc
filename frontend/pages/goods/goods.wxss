@@ -1,0 +1,47 @@
+/* pages/goods/goods.wxss */
+.container{
+  width: 100vw;
+  min-height: 100vh;
+}
+image{
+  width: 70vw;
+  height: 70vw;
+  margin: 0 auto;
+  display: block;
+}
+.content{
+  width: 86vw;
+  margin: 0 auto;
+}
+.price{
+  font-size: 6.4vw;
+  color: #ff6700;
+  font-weight: 700;
+}
+.name{
+  font-size: 4.4vw;
+  font-weight: 700;
+  color: #666;
+  margin: 1.5vh 0;
+}
+.explain{
+  font-size: 2vw;
+  color: #888;
+}
+.add-cart{
+  width: 60vw;
+  height: 3vh;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 2vh;
+  background-image: linear-gradient(to right, #ff9e22, #ff5934);
+  border-radius: 0.8vw;
+  font-size: 3.5vw;
+  color: #fff;
+}
+.see-cart{
+  text-align: center;
+  margin-top: 1vh;
+  font-size: 3.5vw;
+  color: #ff6700;
+}

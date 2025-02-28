@@ -1,0 +1,10 @@
+<view class="container">
+  <image src="/img/{{goods.goodsImg}}" mode=""/>
+  <view class="content">
+    <view class="price">{{goods.goodsPrice}}</view>
+    <view class="name">{{goods.goodsName}}</view>
+    <view class="explain">{{goods.goodsExplain}}</view>
+  </view>
+  <view bind:tap="addCart" class="add-cart">加入购物车</view>
+  <view bind:tap="seeCart" class="see-cart">查看购物车</view>
+</view>
