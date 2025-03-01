@@ -44,12 +44,29 @@ Page({
         "password": pwd
      },
       success: function (res) {
+        if(res.data.code!=200){
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+          });
+          return
+        }
         wx.showToast({
           title: '提交成功',
           icon: 'success',
         });
-        wx.setStorageSync('token', res.data.data.token );
+        let token=res.data.data.token
+        let userName=res.data.data.user.customerName
+        let phoneNum=res.data.data.user.telId
+        wx.setStorageSync('token', token );
         wx.setStorageSync('auth', true );
+        wx.setStorageSync('user', userName );
+        wx.setStorageSync('phone', phoneNum );
+        setTimeout(()=>{
+          wx.redirectTo({
+            url: '/pages/index/index',
+          })
+        }, 500)
       },
       fail: function (err) {
         console.error('接口调用失败:', err);
@@ -72,13 +89,20 @@ Page({
       },
       success: function (res) {
         console.log('接口调用成功:', res.data);
+        if(res.data.code!=200){
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+          });
+          return
+        }
         wx.showToast({
           title: '提交成功',
           icon: 'success',
         });
-        wx.setStorage({
-          auth: true
-        });
+        wx.redirectTo({
+          url: '/pages/profile/profile',
+        })
       },
       fail: function (err) {
         console.error('接口调用失败:', err);

@@ -10,6 +10,8 @@ Page({
     goodsNum: 0,
     sumPrice: 0,
     payWay: -1,
+    user:'',
+    phoneNum:''
   },
   changePayWay(e){
     this.setData({
@@ -63,6 +65,13 @@ Page({
       "addressId": 1 
      },
       success: function (res) {
+        if(res.data.code!=200){
+          wx.showToast({
+            title: res.data.msg,
+            icon: 'none',
+          });
+          return
+        }
         wx.removeStorageSync('cart')
     // TODO 支付逻辑
     wx.showToast({
@@ -108,12 +117,16 @@ Page({
    */
   onShow() {
     let cartData = wx.getStorageSync('cart')
+    let userName = wx.getStorageSync('user')
+    let phone = wx.getStorageSync('phone')
     if(cartData != ''){
       this.setData({
-        cart: cartData
-      })
-
-    }
+        cart: cartData,
+      })}
+    this.setData({
+      user:userName,
+      phoneNum:phone
+    })
     this.calculateCart(cartData)
   },
 
