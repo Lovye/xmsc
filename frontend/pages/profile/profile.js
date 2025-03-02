@@ -44,12 +44,29 @@ Page({
                 "password": pwd
             },
             success: function (res) {
+                if (res.data.code != 200) {
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                    });
+                    return
+                }
                 wx.showToast({
                     title: '提交成功',
                     icon: 'success',
                 });
-                wx.setStorageSync('token', res.data.data.token);
+                let token = res.data.data.token
+                let userName = res.data.data.user.customerName
+                let phoneNum = res.data.data.user.telId
+                wx.setStorageSync('token', token);
                 wx.setStorageSync('auth', true);
+                wx.setStorageSync('user', userName);
+                wx.setStorageSync('phone', phoneNum);
+                setTimeout(() => {
+                    wx.redirectTo({
+                        url: '/pages/index/index',
+                    })
+                }, 500)
             },
             fail: function (err) {
                 console.error('接口调用失败:', err);
@@ -72,13 +89,20 @@ Page({
             },
             success: function (res) {
                 console.log('接口调用成功:', res.data);
+                if (res.data.code != 200) {
+                    wx.showToast({
+                        title: res.data.msg,
+                        icon: 'none',
+                    });
+                    return
+                }
                 wx.showToast({
                     title: '提交成功',
                     icon: 'success',
                 });
-                wx.setStorage({
-                    auth: true
-                });
+                wx.redirectTo({
+                    url: '/pages/profile/profile',
+                })
             },
             fail: function (err) {
                 console.error('接口调用失败:', err);
@@ -105,61 +129,4 @@ Page({
                 url: '/pages/profile/profile',
             })
         }
-    },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
-    onLoad(options) {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage() {
-
-    }
-})
+    })

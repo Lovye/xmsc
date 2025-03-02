@@ -2,8 +2,8 @@
   <view class="addr">
     <view class="left">
       <view class="user">
-        <view class="name">雷军</view>
-        <view class="phone">123456</view>
+        <view class="name">{{user}}</view>
+        <view class="phone">{{ phoneNum }}</view>
       </view>
       <view class="location">
         中国
